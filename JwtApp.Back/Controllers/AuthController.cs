@@ -1,11 +1,16 @@
-﻿using JwtApp.Back.Core.Application.Features.CQRS.Commands;
+﻿using JwtApp.Back.Core.Application.Dto;
+using JwtApp.Back.Core.Application.Features.CQRS.Commands;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries;
+using JwtApp.Back.Infrastructure.Tools;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace JwtApp.Back.Controllers
 {
+    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
@@ -29,7 +34,8 @@ namespace JwtApp.Back.Controllers
            var userDto = await this.mediator.Send(request);
             if (userDto.IsExist)
             {
-                return Created("", 123);
+              var token =   JwtTokenGenerator.GenerateToken(userDto);
+                return Created("", token);
             }
             return BadRequest("Username veya Password Hatalı");
         }
