@@ -3,8 +3,7 @@ using MediatR;
 
 namespace JwtApp.Back.Core.Application.Features.CQRS.Queries
 {
-    public class GetAllProductsQueryRequest:IRequest<List<ProductListDto>>
+    public class GetAllProductsQueryRequest : IRequest<List<ProductListDto>>
     {
-
     }
 }

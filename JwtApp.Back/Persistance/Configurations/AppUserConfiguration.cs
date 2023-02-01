@@ -9,14 +9,14 @@ namespace JwtApp.Back.Persistance.Configurations
         public void Configure(EntityTypeBuilder<AppUser> builder)
         {
             builder.HasOne(x => x.AppRole).WithMany(x => x.AppUsers).HasForeignKey(x => x.AppRoleId);
-           
         }
     }
+
     public class ProductConfiguartion : IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.HasOne(x=>x.Category).WithMany(x => x.Products).HasForeignKey(x => x.CategoryId);
+            builder.HasOne(x => x.Category).WithMany(x => x.Products).HasForeignKey(x => x.CategoryId);
         }
     }
 }

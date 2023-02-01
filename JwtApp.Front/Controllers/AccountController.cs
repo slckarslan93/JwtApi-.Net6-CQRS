@@ -22,6 +22,7 @@ namespace JwtApp.Front.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> SignIn(UserLoginModel model)
         {
@@ -31,26 +32,26 @@ namespace JwtApp.Front.Controllers
             if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
-                var tokenModel = JsonSerializer.Deserialize<JwtResponseModel>(jsonData,new JsonSerializerOptions
+                var tokenModel = JsonSerializer.Deserialize<JwtResponseModel>(jsonData, new JsonSerializerOptions
                 {
-                    PropertyNamingPolicy=JsonNamingPolicy.CamelCase,
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 });
 
                 JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-               var token =  handler.ReadJwtToken(tokenModel?.Token);
+                var token = handler.ReadJwtToken(tokenModel?.Token);
                 if (token != null)
                 {
                     var claims = token.Claims.ToList();
                     claims.Add(new Claim("accessToken", tokenModel?.Token == null ? "" : tokenModel.Token));
 
-                    ClaimsIdentity identity = new ClaimsIdentity(claims,JwtBearerDefaults.AuthenticationScheme);
+                    ClaimsIdentity identity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
                     var authProps = new AuthenticationProperties
                     {
                         AllowRefresh = false,
                         ExpiresUtc = tokenModel?.ExpireDate,
                         IsPersistent = true,
                     };
-                   await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), authProps);
+                    await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), authProps);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -59,15 +60,13 @@ namespace JwtApp.Front.Controllers
 
                     return View(model);
                 }
-                
             }
             else
             {
                 ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı");
-                
+
                 return View(model);
             }
-
         }
     }
 }

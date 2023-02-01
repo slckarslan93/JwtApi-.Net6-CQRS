@@ -19,11 +19,11 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Handlers
         {
             await this.repository.CreateAsync(new AppUser
             {
-                AppRoleId=(int)RoleType.member,
-                Password=request.Password,
-                UserName=request.Username,
+                AppRoleId = (int)RoleType.member,
+                Password = request.Password,
+                UserName = request.Username,
             });
-            return Unit.Value;  
+            return Unit.Value;
         }
     }
 }

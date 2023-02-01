@@ -1,12 +1,9 @@
-﻿using JwtApp.Back.Core.Application.Dto;
-using JwtApp.Back.Core.Application.Features.CQRS.Commands;
+﻿using JwtApp.Back.Core.Application.Features.CQRS.Commands;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries;
 using JwtApp.Back.Infrastructure.Tools;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace JwtApp.Back.Controllers
 {
@@ -28,13 +25,14 @@ namespace JwtApp.Back.Controllers
             await this.mediator.Send(request);
             return Created("", request);
         }
+
         [HttpPost("[action]")]
         public async Task<IActionResult> SignIn(CheckUserQueryRequest request)
         {
-           var userDto = await this.mediator.Send(request);
+            var userDto = await this.mediator.Send(request);
             if (userDto.IsExist)
             {
-              var token =   JwtTokenGenerator.GenerateToken(userDto);
+                var token = JwtTokenGenerator.GenerateToken(userDto);
                 return Created("", token);
             }
             return BadRequest("Username veya Password Hatalı");

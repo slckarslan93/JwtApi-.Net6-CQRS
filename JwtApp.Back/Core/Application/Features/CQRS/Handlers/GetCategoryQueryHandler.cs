@@ -22,7 +22,6 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Handlers
         {
             var data = await this.repository.GetByFilterAsync(x => x.Id == request.Id);
             return this.mapper.Map<CategoryListDto>(data);
-            
         }
     }
 }

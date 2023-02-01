@@ -24,7 +24,6 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Handlers
                 Stock = request.Stock
             });
             return Unit.Value;
-
         }
     }
 }

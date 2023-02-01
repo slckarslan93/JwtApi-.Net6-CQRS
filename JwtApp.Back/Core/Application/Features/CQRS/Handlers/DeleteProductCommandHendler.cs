@@ -16,13 +16,12 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Handlers
 
         public async Task<Unit> Handle(DeleteProductCommandRequest request, CancellationToken cancellationToken)
         {
-            var deletedEntity =await this.repository.GetByIdAsync(request.Id);
+            var deletedEntity = await this.repository.GetByIdAsync(request.Id);
             if (deletedEntity != null)
             {
                 await this.repository.RemoveAsync(deletedEntity);
             }
             return Unit.Value;
-          
         }
     }
 }

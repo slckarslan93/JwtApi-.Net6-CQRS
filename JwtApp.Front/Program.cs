@@ -10,7 +10,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
     opt.LogoutPath = "/Account/Logout";
     opt.AccessDeniedPath = "/Account/AccessDenied";
     opt.Cookie.SameSite = SameSiteMode.Strict;
-    opt.Cookie.HttpOnly=true;
+    opt.Cookie.HttpOnly = true;
     opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
     opt.Cookie.Name = "UdemyJwtCookie";
 });

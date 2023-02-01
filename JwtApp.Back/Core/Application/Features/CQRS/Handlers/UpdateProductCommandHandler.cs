@@ -17,7 +17,7 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Handlers
         public async Task<Unit> Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)
         {
             var updatedProduct = await this.repository.GetByIdAsync(request.Id);
-            if (updatedProduct!=null)
+            if (updatedProduct != null)
             {
                 updatedProduct.CategoryId = request.CategoryId;
                 updatedProduct.Stock = request.Stock;
@@ -26,7 +26,7 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Handlers
 
                 await this.repository.UpdateAsync(updatedProduct);
             }
-            return Unit.Value;  
+            return Unit.Value;
         }
     }
 }

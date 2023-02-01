@@ -16,7 +16,7 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Handlers
 
         public async Task<Unit> Handle(UpdateCategoryCommandRequest request, CancellationToken cancellationToken)
         {
-            var updatedEntity =await this.repository.GetByIdAsync(request.Id);
+            var updatedEntity = await this.repository.GetByIdAsync(request.Id);
             if (updatedEntity != null)
             {
                 updatedEntity.Definition = request.Definition;
@@ -25,7 +25,6 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Handlers
             }
 
             return Unit.Value;
-
         }
     }
 }

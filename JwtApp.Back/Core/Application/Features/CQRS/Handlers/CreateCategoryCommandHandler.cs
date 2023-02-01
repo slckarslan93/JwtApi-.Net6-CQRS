@@ -18,7 +18,7 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Handlers
         {
             await this.repository.CreateAsync(new Category
             {
-                Definition=request.Definition
+                Definition = request.Definition
             });
             return Unit.Value;
         }

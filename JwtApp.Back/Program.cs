@@ -32,7 +32,6 @@ builder.Services.AddAutoMapper(opt =>
         new ProductProfile(),
         new CategoryProfile()
     });
-
 });
 
 builder.Services.AddCors(opt =>
@@ -41,7 +40,6 @@ builder.Services.AddCors(opt =>
     {
         config.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
-
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>

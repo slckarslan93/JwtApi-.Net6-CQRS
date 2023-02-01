@@ -38,23 +38,20 @@ namespace JwtApp.Front.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-
         }
 
         public async Task<IActionResult> Remove(int id)
         {
             var client = this.CreateClient();
-            
 
-           await client.DeleteAsync($"http://localhost:5140/api/Categories{id}");
-
+            await client.DeleteAsync($"http://localhost:5140/api/Categories{id}");
 
             return RedirectToAction("List");
         }
 
         public IActionResult Create()
         {
-            return View(new CategoryCreateRequestModel());  
+            return View(new CategoryCreateRequestModel());
         }
 
         public IActionResult Create(CategoryCreateRequestModel model)

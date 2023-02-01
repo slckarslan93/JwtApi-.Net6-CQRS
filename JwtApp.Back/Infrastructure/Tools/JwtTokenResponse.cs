@@ -4,9 +4,10 @@
     {
         public string Token { get; set; }
         public DateTime ExpireDate { get; set; }
-        public JwtTokenResponse(string token,DateTime expireDate)
+
+        public JwtTokenResponse(string token, DateTime expireDate)
         {
-            ExpireDate=expireDate;
+            ExpireDate = expireDate;
             Token = token;
         }
     }

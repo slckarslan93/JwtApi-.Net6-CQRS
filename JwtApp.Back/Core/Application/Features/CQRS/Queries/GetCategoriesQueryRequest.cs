@@ -3,7 +3,7 @@ using MediatR;
 
 namespace JwtApp.Back.Core.Application.Features.CQRS.Queries
 {
-    public class GetCategoriesQueryRequest:IRequest<List<CategoryListDto>>
+    public class GetCategoriesQueryRequest : IRequest<List<CategoryListDto>>
     {
     }
 }

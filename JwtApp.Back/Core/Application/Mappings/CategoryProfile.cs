@@ -4,7 +4,7 @@ using JwtApp.Back.Core.Domain;
 
 namespace JwtApp.Back.Core.Application.Mappings
 {
-    public class CategoryProfile:Profile
+    public class CategoryProfile : Profile
     {
         public CategoryProfile()
         {

@@ -37,7 +37,6 @@ namespace JwtApp.Back.Persistance.Repositories
 
         public async Task RemoveAsync(T entity)
         {
-
             this.jwtContext.Set<T>().Remove(entity);
             await this.jwtContext.SaveChangesAsync();
         }

@@ -8,7 +8,6 @@ namespace JwtApp.Back.Persistance.Context
     {
         public JwtContext(DbContextOptions<JwtContext> options) : base(options)
         {
-
         }
 
         public DbSet<Product> Products => this.Set<Product>();
@@ -22,6 +21,5 @@ namespace JwtApp.Back.Persistance.Context
             modelBuilder.ApplyConfiguration(new AppUserConfiguration());
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }
